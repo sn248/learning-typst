@@ -1,5 +1,19 @@
-#import "pmap.typ": pmap
-#show: pmap
+#import "pmap.typ": pmap, gls, glspl, print-glossary
+
+#let my-glossary = (
+  (
+    key: "pk",
+    short: "PK",
+    long: "pharmacokinetics",
+    description: "The study of how a drug is absorbed, distributed, metabolized, and excreted by the body.",
+  ),
+)
+
+#show: pmap.with(glossary: my-glossary)
+
+#heading(numbering: none)[Glossary]
+
+#print-glossary(my-glossary)
 
 = Introduction
 
@@ -18,10 +32,12 @@ Check out this math formula: $ v(t) = lim_(t -> oo) integral_t^oo c dot sqrt(t^2
 ===== Sub-section
 ====== Sub-section
 
+= Adding a bulleted list
 + The climate
 + The topography
 + The geology
 
+= Adding a figure
 // Adding a figure - this is a comment
 #block(width: 100%)[
   #figure(
@@ -34,11 +50,14 @@ Check out this math formula: $ v(t) = lim_(t -> oo) integral_t^oo c dot sqrt(t^2
   #align(left)[This is the figure description. It spans the full page width and provides additional context about the glaciers shown above.]
 ]
 
+
 A picture of melting glaciers is in @glaciers. This is also described in @hock2005glacier
 
-
+= Adding an equation
 The equation $Q = rho A v + C$ defines the glacial flow rate.
+A block of equations to be added.
 
+= Adding a table
 // Adding a table
 #block(width: 100%)[
   #figure(
@@ -63,5 +82,7 @@ The equation $Q = rho A v + C$ defines the glacial flow rate.
   #align(left)[This is the table description. It provides additional context about the volume formulas listed above.]
 ]
 
-A block of equations to be added.
+= Adding a glossary term
+The #gls("pk") are modeled using a 1-compartment model
+
 #bibliography("works.bib")
