@@ -44,7 +44,7 @@ Check out this math formula: $ v(t) = lim_(t -> oo) integral_t^oo c dot sqrt(t^2
     image("./glaciers.png", width: 50%),
     caption: [
       _Glaciers_ form an important part
-      of the earth's climate system.
+      of the earth's climate system. This is left-aligned and spans the width of the page.
     ],
   )<glaciers>
   #align(left)[This is the figure description. It spans the full page width and provides additional context about the glaciers shown above.]
@@ -77,9 +77,9 @@ A block of equations to be added.
       $ sqrt(2) / 12 a^3 $,
       [$a$: edge length]
     ),
-    caption: [Volume formulas for geometric solids],
+    caption: [Volume formulas for geometric solids. This is left-aligned and spans the width of the page.],
   )
-  #align(left)[This is the table description. It provides additional context about the volume formulas listed above.]
+  #align(left)[This is the table description. It provides additional context about the volume formulas listed above. This is also left-aligned and spans the width of the page.]
 ]
 
 = Adding a glossary term
