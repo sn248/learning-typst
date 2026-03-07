@@ -11,7 +11,22 @@
   ),
 )
 
-#show: pmap.with(glossary: my-glossary)
+#show: pmap.with(
+  title: [Population Modeling Analysis Plan],
+  project: "EQDD-PMAP-12345",
+  company: "PFE",
+  status: "Draft",
+  version: "2.1",
+  authors: ("SN",),
+  contact: "sn@sn.com",
+  website: "www.example.com",
+  version_history: (
+    (version: "1.0", date: "01 Jan 2026", author: "Author A", changes: "Initial draft"),
+    (version: "2.0", date: "15 Feb 2026", author: "Author A", changes: "Added glossary"),
+    (version: "2.1", date: "07 Mar 2026", author: "Author A", changes: "Updated to PharmTeX style"),
+  ),
+  glossary: my-glossary
+)
 
 #heading(numbering: none)[Glossary]
 
