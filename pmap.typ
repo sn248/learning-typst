@@ -1,4 +1,10 @@
-#import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
+#import "@preview/glossarium:0.5.10" as glossarium
+
+#let make-glossary = glossarium.make-glossary
+#let register-glossary = glossarium.register-glossary
+#let print-glossary = glossarium.print-glossary
+#let gls = glossarium.gls
+#let glspl = glossarium.glspl
 
 #let pmap(
   title: "Document Title",
@@ -11,7 +17,7 @@
   website: "",
   date: none,
   logo: none,
-  confidentiality_statement: "COMPANY CONFIDENTIAL",
+  confidentiality_statement: "CONFIDENTIAL",
   version_history: (),
   glossary: (),
   body
@@ -37,8 +43,9 @@
         block(width: 100%, inset: (top: 5pt))[
           #set text(size: 9pt)
           #grid(
-            columns: (1fr, 1fr),
-            align(left)[#upper(confidentiality_statement)],
+            columns: (1fr, 1fr, 1fr),
+            align(left)[],
+            align(center)[#upper(confidentiality_statement)],
             align(right)[Page #counter(page).display() of #counter(page).final().at(0)]
           )
         ]
@@ -60,7 +67,7 @@
       v(4em)
     }
 
-    #text(size: 24pt, weight: "bold")[#upper(title)]
+    #text(size: 14pt, weight: "bold")[#upper(title)]
     #v(2em)
 
     #block(width: 80%)[
@@ -116,7 +123,11 @@
   register-glossary(glossary)
 
   show heading.where(level: 1, outlined: true): it => {
-    pagebreak()
+    context {
+      if it.numbering != none and counter(heading).get().first() == 1 {
+        pagebreak()
+      }
+    }
     it
   }
 
@@ -155,5 +166,6 @@
     it
   }
 
+  pagebreak(weak: true)
   body
 }

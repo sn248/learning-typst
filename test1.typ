@@ -9,6 +9,12 @@
     long: "pharmacokinetics",
     description: "The study of how a drug is absorbed, distributed, metabolized, and excreted by the body.",
   ),
+  (
+    key: "pd",
+    short: "PD",
+    long: "pharmacodynamics",
+    description: "The study of how a drug affects the body.",
+  )
 )
 
 #show: pmap.with(
@@ -28,9 +34,14 @@
   glossary: my-glossary
 )
 
-#heading(numbering: none)[Glossary]
+#align(center)[#heading(numbering: none, outlined: false)[#text(size: 14pt)[ABBREVIATIONS AND DEFINITIONS]]]
 
-#print-glossary(my-glossary)
+#table(
+  columns: (auto, 1fr),
+  stroke: none,
+  table.header([*Notation*], [*Description*]),
+  ..my-glossary.sorted(key: entry => lower(entry.short)).map(entry => ([#entry.short #label(str(entry.key))], entry.description)).flatten()
+)
 
 = Introduction
 
@@ -106,14 +117,16 @@ The table caption (at the top) and the description (at the bottome) should be le
       inset: 11pt,
       align: horizon,
       table.header(
-        [], [*Volume*], [*Parameters*],
+        [*Shape*], [*Volume*], [*Parameters*],
       ),
+      [Hollow Cylinder],
       $pi h (D^2 - d^2) / 4$,         // make sure to have no space after and before $ to avoid numbering
       [
         $h$: height \
         $D$: outer radius \
         $d$: inner radius
       ],
+      [Tetrahedron],
       $sqrt(2) / 12 a^3$,             // make sure to have no space after and before $ to avoid numbering
       [$a$: edge length]
     ),
@@ -123,6 +136,6 @@ The table caption (at the top) and the description (at the bottome) should be le
 ]
 
 = Adding a glossary term
-The #gls("pk") are modeled using a 1-compartment model
+The #gls("pk") are modeled using a 1-compartment model. #gls("pd") is the effect of drug on the body.
 
 #bibliography("works.bib")
